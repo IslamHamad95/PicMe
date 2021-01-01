@@ -17,6 +17,7 @@ const SearchBox = () => {
   const Submitsearch = (e) => {
     e.preventDefault();
     setSearchedTag(searchedTag=> searchedTag= tag)
+    console.log(items.length)
   };
 
   const items = ApiCall(
