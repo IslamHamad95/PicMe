@@ -3,9 +3,10 @@ import { Container, Grid, Paper } from "../Matrial-ui/imports";
 import GetAppIcon from "@material-ui/icons/GetApp";
 import VisibilityIcon from "@material-ui/icons/Visibility";
 import ThumbUpIcon from "@material-ui/icons/ThumbUp";
+import empty from "../storage/empty.svg";
 
 const Images = ({ searchedImages }) => {
-  return (
+  return searchedImages.length ? (
     <Container maxWidth={false}>
       <Grid container spacing={2} className="imgs-ctr">
         {searchedImages.map((image) => (
@@ -25,8 +26,8 @@ const Images = ({ searchedImages }) => {
                   <span id="likes"> {image.likes}</span>
                 </div>
                 <Grid className="tags" spacing={2} container>
-                  {image.tags.split(",").map((tag,index) => (
-                    <Grid item key={index}  id="tag">
+                  {image.tags.split(",").map((tag, index) => (
+                    <Grid item key={index} id="tag">
                       #{tag}
                     </Grid>
                   ))}
@@ -37,6 +38,11 @@ const Images = ({ searchedImages }) => {
         ))}
       </Grid>
     </Container>
+  ) : (
+    <div maxWidth={false} className="not-found">
+      <h1>SORRY, WE DO NOT HAVE THIS YET :(</h1>
+      <img src={empty} alt="empty"></img>
+    </div>
   );
 };
 
